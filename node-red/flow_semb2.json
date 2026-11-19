@@ -1,0 +1,732 @@
+[
+  {
+    "id": "tab_semb2",
+    "type": "tab",
+    "label": "SEMB2 - Sala",
+    "disabled": false,
+    "info": "Painel e comandos MQTT da automação de sala (topicos semb2/sala/...)"
+  },
+  {
+    "id": "broker",
+    "type": "mqtt-broker",
+    "name": "Mosquitto local",
+    "broker": "localhost",
+    "port": "1883",
+    "clientid": "",
+    "autoConnect": true,
+    "usetls": false,
+    "protocolVersion": "4",
+    "keepalive": "60",
+    "cleansession": true,
+    "autoUnsubscribe": true,
+    "birthTopic": "",
+    "birthQos": "0",
+    "birthRetain": "false",
+    "birthPayload": "",
+    "birthMsg": {},
+    "closeTopic": "",
+    "closeQos": "0",
+    "closeRetain": "false",
+    "closePayload": "",
+    "closeMsg": {},
+    "willTopic": "",
+    "willQos": "0",
+    "willRetain": "false",
+    "willPayload": "",
+    "willMsg": {},
+    "userProps": "",
+    "sessionExpiry": ""
+  },
+  {
+    "id": "ui_base",
+    "type": "ui-base",
+    "name": "SEMB2 - Sala",
+    "path": "/dashboard",
+    "appIcon": "",
+    "includeClientData": true,
+    "acceptsClientConfig": [
+      "ui-notification",
+      "ui-control"
+    ],
+    "showPathInSidebar": false,
+    "headerContent": "page",
+    "navigationStyle": "default",
+    "titleBarStyle": "default",
+    "showReconnectNotification": true,
+    "notificationDisplayTime": 1,
+    "showDisconnectNotification": true,
+    "allowInstall": false
+  },
+  {
+    "id": "ui_theme",
+    "type": "ui-theme",
+    "name": "Tema SEMB2",
+    "colors": {
+      "surface": "#0094ce",
+      "primary": "#0094ce",
+      "bgPage": "#eeeeee",
+      "groupBg": "#ffffff",
+      "groupOutline": "#cccccc"
+    },
+    "sizes": {
+      "density": "default",
+      "pagePadding": "12px",
+      "groupGap": "12px",
+      "groupBorderRadius": "4px",
+      "columnGap": "12px",
+      "rowHeight": "48px"
+    }
+  },
+  {
+    "id": "ui_page",
+    "type": "ui-page",
+    "name": "Sala",
+    "ui": "ui_base",
+    "path": "/sala",
+    "icon": "home",
+    "layout": "grid",
+    "theme": "ui_theme",
+    "breakpoints": [
+      {
+        "name": "Default",
+        "px": "0",
+        "cols": "3"
+      },
+      {
+        "name": "Tablet",
+        "px": "576",
+        "cols": "6"
+      },
+      {
+        "name": "Small Desktop",
+        "px": "768",
+        "cols": "9"
+      },
+      {
+        "name": "Desktop",
+        "px": "1024",
+        "cols": "12"
+      }
+    ],
+    "order": 1,
+    "className": "",
+    "visible": "true",
+    "disabled": "false"
+  },
+  {
+    "id": "g_ctrl",
+    "type": "ui-group",
+    "name": "Controle",
+    "page": "ui_page",
+    "width": "6",
+    "height": "1",
+    "order": 1,
+    "showTitle": true,
+    "className": "",
+    "visible": "true",
+    "disabled": "false",
+    "groupType": "default"
+  },
+  {
+    "id": "g_sens",
+    "type": "ui-group",
+    "name": "Sensores",
+    "page": "ui_page",
+    "width": "6",
+    "height": "1",
+    "order": 2,
+    "showTitle": true,
+    "className": "",
+    "visible": "true",
+    "disabled": "false",
+    "groupType": "default"
+  },
+  {
+    "id": "sw_luz",
+    "type": "ui-switch",
+    "z": "tab_semb2",
+    "group": "g_ctrl",
+    "order": 1,
+    "width": 3,
+    "height": 1,
+    "name": "",
+    "label": "Luz",
+    "passthru": false,
+    "decouple": true,
+    "topic": "topic",
+    "topicType": "msg",
+    "style": "",
+    "className": "",
+    "layout": "row-spread",
+    "clickableArea": "switch",
+    "onvalue": "ON",
+    "onvalueType": "str",
+    "onicon": "",
+    "oncolor": "",
+    "offvalue": "OFF",
+    "offvalueType": "str",
+    "officon": "",
+    "offcolor": "",
+    "x": 560,
+    "y": 60,
+    "wires": [
+      [
+        "out_luz"
+      ]
+    ]
+  },
+  {
+    "id": "sw_vent",
+    "type": "ui-switch",
+    "z": "tab_semb2",
+    "group": "g_ctrl",
+    "order": 2,
+    "width": 3,
+    "height": 1,
+    "name": "",
+    "label": "Ventilador",
+    "passthru": false,
+    "decouple": true,
+    "topic": "topic",
+    "topicType": "msg",
+    "style": "",
+    "className": "",
+    "layout": "row-spread",
+    "clickableArea": "switch",
+    "onvalue": "ON",
+    "onvalueType": "str",
+    "onicon": "",
+    "oncolor": "",
+    "offvalue": "OFF",
+    "offvalueType": "str",
+    "officon": "",
+    "offcolor": "",
+    "x": 560,
+    "y": 120,
+    "wires": [
+      [
+        "out_vent"
+      ]
+    ]
+  },
+  {
+    "id": "sw_modo",
+    "type": "ui-switch",
+    "z": "tab_semb2",
+    "group": "g_ctrl",
+    "order": 3,
+    "width": 3,
+    "height": 1,
+    "name": "",
+    "label": "Modo manual",
+    "passthru": false,
+    "decouple": true,
+    "topic": "topic",
+    "topicType": "msg",
+    "style": "",
+    "className": "",
+    "layout": "row-spread",
+    "clickableArea": "switch",
+    "onvalue": "MANUAL",
+    "onvalueType": "str",
+    "onicon": "",
+    "oncolor": "",
+    "offvalue": "AUTO",
+    "offvalueType": "str",
+    "officon": "",
+    "offcolor": "",
+    "x": 560,
+    "y": 180,
+    "wires": [
+      [
+        "out_modo"
+      ]
+    ]
+  },
+  {
+    "id": "in_luz",
+    "type": "mqtt in",
+    "z": "tab_semb2",
+    "name": "",
+    "topic": "semb2/sala/luz/estado",
+    "qos": "0",
+    "datatype": "auto-detect",
+    "broker": "broker",
+    "nl": false,
+    "rap": true,
+    "rh": 0,
+    "inputs": 0,
+    "x": 170,
+    "y": 60,
+    "wires": [
+      [
+        "sw_luz"
+      ]
+    ]
+  },
+  {
+    "id": "in_vent",
+    "type": "mqtt in",
+    "z": "tab_semb2",
+    "name": "",
+    "topic": "semb2/sala/ventilador/estado",
+    "qos": "0",
+    "datatype": "auto-detect",
+    "broker": "broker",
+    "nl": false,
+    "rap": true,
+    "rh": 0,
+    "inputs": 0,
+    "x": 170,
+    "y": 120,
+    "wires": [
+      [
+        "sw_vent"
+      ]
+    ]
+  },
+  {
+    "id": "in_modo",
+    "type": "mqtt in",
+    "z": "tab_semb2",
+    "name": "",
+    "topic": "semb2/sala/modo/estado",
+    "qos": "0",
+    "datatype": "auto-detect",
+    "broker": "broker",
+    "nl": false,
+    "rap": true,
+    "rh": 0,
+    "inputs": 0,
+    "x": 170,
+    "y": 180,
+    "wires": [
+      [
+        "sw_modo"
+      ]
+    ]
+  },
+  {
+    "id": "out_luz",
+    "type": "mqtt out",
+    "z": "tab_semb2",
+    "name": "",
+    "topic": "semb2/sala/luz/set",
+    "qos": "0",
+    "retain": "false",
+    "respTopic": "",
+    "contentType": "",
+    "userProps": "",
+    "correl": "",
+    "expiry": "",
+    "broker": "broker",
+    "x": 790,
+    "y": 60,
+    "wires": []
+  },
+  {
+    "id": "out_vent",
+    "type": "mqtt out",
+    "z": "tab_semb2",
+    "name": "",
+    "topic": "semb2/sala/ventilador/set",
+    "qos": "0",
+    "retain": "false",
+    "respTopic": "",
+    "contentType": "",
+    "userProps": "",
+    "correl": "",
+    "expiry": "",
+    "broker": "broker",
+    "x": 790,
+    "y": 120,
+    "wires": []
+  },
+  {
+    "id": "out_modo",
+    "type": "mqtt out",
+    "z": "tab_semb2",
+    "name": "",
+    "topic": "semb2/sala/modo/set",
+    "qos": "0",
+    "retain": "false",
+    "respTopic": "",
+    "contentType": "",
+    "userProps": "",
+    "correl": "",
+    "expiry": "",
+    "broker": "broker",
+    "x": 790,
+    "y": 180,
+    "wires": []
+  },
+  {
+    "id": "tx_status",
+    "type": "ui-text",
+    "z": "tab_semb2",
+    "group": "g_ctrl",
+    "order": 4,
+    "width": 3,
+    "height": 1,
+    "name": "",
+    "label": "ESP32",
+    "format": "{{msg.payload}}",
+    "layout": "row-spread",
+    "style": false,
+    "font": "",
+    "fontSize": 16,
+    "color": "#717171",
+    "wrapText": false,
+    "className": "",
+    "value": "payload",
+    "valueType": "msg",
+    "x": 560,
+    "y": 240,
+    "wires": []
+  },
+  {
+    "id": "in_status",
+    "type": "mqtt in",
+    "z": "tab_semb2",
+    "name": "",
+    "topic": "semb2/sala/status",
+    "qos": "0",
+    "datatype": "auto-detect",
+    "broker": "broker",
+    "nl": false,
+    "rap": true,
+    "rh": 0,
+    "inputs": 0,
+    "x": 170,
+    "y": 240,
+    "wires": [
+      [
+        "tx_status"
+      ]
+    ]
+  },
+  {
+    "id": "ga_temp",
+    "type": "ui-gauge",
+    "z": "tab_semb2",
+    "group": "g_sens",
+    "order": 1,
+    "name": "",
+    "value": "payload",
+    "valueType": "msg",
+    "width": 3,
+    "height": 3,
+    "gtype": "gauge-half",
+    "gstyle": "needle",
+    "title": "Temperatura",
+    "alwaysShowTitle": false,
+    "floatingTitlePosition": "top-left",
+    "units": "°C",
+    "icon": "",
+    "prefix": "",
+    "suffix": "",
+    "segments": [
+      {
+        "from": "10",
+        "color": "#5cd65c"
+      },
+      {
+        "from": "27",
+        "color": "#ffc800"
+      },
+      {
+        "from": "28",
+        "color": "#ea5353"
+      }
+    ],
+    "min": 10,
+    "max": 40,
+    "sizeThickness": 16,
+    "sizeGap": 4,
+    "sizeKeyThickness": 8,
+    "styleRounded": true,
+    "styleGlow": false,
+    "className": "",
+    "x": 560,
+    "y": 320,
+    "wires": []
+  },
+  {
+    "id": "ga_ldr",
+    "type": "ui-gauge",
+    "z": "tab_semb2",
+    "group": "g_sens",
+    "order": 2,
+    "name": "",
+    "value": "payload",
+    "valueType": "msg",
+    "width": 3,
+    "height": 3,
+    "gtype": "gauge-half",
+    "gstyle": "needle",
+    "title": "Luminosidade (LDR)",
+    "alwaysShowTitle": false,
+    "floatingTitlePosition": "top-left",
+    "units": "",
+    "icon": "",
+    "prefix": "",
+    "suffix": "",
+    "segments": [
+      {
+        "from": "0",
+        "color": "#4a4a8a"
+      },
+      {
+        "from": "1000",
+        "color": "#ffc800"
+      },
+      {
+        "from": "1400",
+        "color": "#5cd65c"
+      }
+    ],
+    "min": 0,
+    "max": 4095,
+    "sizeThickness": 16,
+    "sizeGap": 4,
+    "sizeKeyThickness": 8,
+    "styleRounded": true,
+    "styleGlow": false,
+    "className": "",
+    "x": 560,
+    "y": 380,
+    "wires": []
+  },
+  {
+    "id": "ch_temp",
+    "type": "ui-chart",
+    "z": "tab_semb2",
+    "group": "g_sens",
+    "name": "",
+    "label": "Temperatura (última hora)",
+    "order": 3,
+    "chartType": "line",
+    "category": "temperatura",
+    "categoryType": "str",
+    "xAxisLabel": "",
+    "xAxisProperty": "",
+    "xAxisPropertyType": "timestamp",
+    "xAxisType": "time",
+    "xAxisFormat": "",
+    "xAxisFormatType": "auto",
+    "xmin": "",
+    "xmax": "",
+    "yAxisLabel": "°C",
+    "yAxisProperty": "payload",
+    "yAxisPropertyType": "msg",
+    "ymin": "",
+    "ymax": "",
+    "bins": 10,
+    "action": "append",
+    "stackSeries": false,
+    "pointShape": "circle",
+    "pointRadius": 2,
+    "showLegend": false,
+    "removeOlder": 1,
+    "removeOlderUnit": "3600",
+    "removeOlderPoints": "",
+    "colors": [
+      "#0095ff",
+      "#ff7f0e",
+      "#2ca02c"
+    ],
+    "textColor": [
+      "#666666"
+    ],
+    "textColorDefault": true,
+    "gridColor": [
+      "#e5e5e5"
+    ],
+    "gridColorDefault": true,
+    "width": 6,
+    "height": 5,
+    "className": "",
+    "interpolation": "linear",
+    "x": 560,
+    "y": 440,
+    "wires": []
+  },
+  {
+    "id": "in_temp",
+    "type": "mqtt in",
+    "z": "tab_semb2",
+    "name": "",
+    "topic": "semb2/sala/temperatura",
+    "qos": "0",
+    "datatype": "auto-detect",
+    "broker": "broker",
+    "nl": false,
+    "rap": true,
+    "rh": 0,
+    "inputs": 0,
+    "x": 170,
+    "y": 320,
+    "wires": [
+      [
+        "ga_temp",
+        "ch_temp"
+      ]
+    ]
+  },
+  {
+    "id": "in_ldr",
+    "type": "mqtt in",
+    "z": "tab_semb2",
+    "name": "",
+    "topic": "semb2/sala/luminosidade",
+    "qos": "0",
+    "datatype": "auto-detect",
+    "broker": "broker",
+    "nl": false,
+    "rap": true,
+    "rh": 0,
+    "inputs": 0,
+    "x": 170,
+    "y": 380,
+    "wires": [
+      [
+        "ga_ldr"
+      ]
+    ]
+  },
+  {
+    "id": "tx_press",
+    "type": "ui-text",
+    "z": "tab_semb2",
+    "group": "g_sens",
+    "order": 4,
+    "width": 3,
+    "height": 1,
+    "name": "",
+    "label": "Pressão (hPa)",
+    "format": "{{msg.payload}}",
+    "layout": "row-spread",
+    "style": false,
+    "font": "",
+    "fontSize": 16,
+    "color": "#717171",
+    "wrapText": false,
+    "className": "",
+    "value": "payload",
+    "valueType": "msg",
+    "x": 560,
+    "y": 520,
+    "wires": []
+  },
+  {
+    "id": "in_press",
+    "type": "mqtt in",
+    "z": "tab_semb2",
+    "name": "",
+    "topic": "semb2/sala/pressao",
+    "qos": "0",
+    "datatype": "auto-detect",
+    "broker": "broker",
+    "nl": false,
+    "rap": true,
+    "rh": 0,
+    "inputs": 0,
+    "x": 170,
+    "y": 500,
+    "wires": [
+      [
+        "tx_press"
+      ]
+    ]
+  },
+  {
+    "id": "tx_dist",
+    "type": "ui-text",
+    "z": "tab_semb2",
+    "group": "g_sens",
+    "order": 5,
+    "width": 3,
+    "height": 1,
+    "name": "",
+    "label": "Distância (cm)",
+    "format": "{{msg.payload}}",
+    "layout": "row-spread",
+    "style": false,
+    "font": "",
+    "fontSize": 16,
+    "color": "#717171",
+    "wrapText": false,
+    "className": "",
+    "value": "payload",
+    "valueType": "msg",
+    "x": 560,
+    "y": 580,
+    "wires": []
+  },
+  {
+    "id": "in_dist",
+    "type": "mqtt in",
+    "z": "tab_semb2",
+    "name": "",
+    "topic": "semb2/sala/distancia",
+    "qos": "0",
+    "datatype": "auto-detect",
+    "broker": "broker",
+    "nl": false,
+    "rap": true,
+    "rh": 0,
+    "inputs": 0,
+    "x": 170,
+    "y": 560,
+    "wires": [
+      [
+        "tx_dist"
+      ]
+    ]
+  },
+  {
+    "id": "tx_pres",
+    "type": "ui-text",
+    "z": "tab_semb2",
+    "group": "g_sens",
+    "order": 6,
+    "width": 3,
+    "height": 1,
+    "name": "",
+    "label": "Presença",
+    "format": "{{msg.payload}}",
+    "layout": "row-spread",
+    "style": false,
+    "font": "",
+    "fontSize": 16,
+    "color": "#717171",
+    "wrapText": false,
+    "className": "",
+    "value": "payload",
+    "valueType": "msg",
+    "x": 560,
+    "y": 640,
+    "wires": []
+  },
+  {
+    "id": "in_pres",
+    "type": "mqtt in",
+    "z": "tab_semb2",
+    "name": "",
+    "topic": "semb2/sala/presenca",
+    "qos": "0",
+    "datatype": "auto-detect",
+    "broker": "broker",
+    "nl": false,
+    "rap": true,
+    "rh": 0,
+    "inputs": 0,
+    "x": 170,
+    "y": 620,
+    "wires": [
+      [
+        "tx_pres"
+      ]
+    ]
+  }
+]
